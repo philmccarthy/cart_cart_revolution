@@ -13,10 +13,7 @@ class ShoppingCart
   end
 
   def details
-    cart_details = {}
-    cart_details[:name] = @name
-    cart_details[:capacity] = @capacity
-    cart_details
+    {name: @name, capacity: @capacity}
   end
 
   def total_number_of_products
