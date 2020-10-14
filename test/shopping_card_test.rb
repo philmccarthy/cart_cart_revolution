@@ -34,4 +34,12 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product4)
     assert @cart.is_full?
   end
+
+  def test_cart_can_be_sorted_and_report_product_breakdown
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    require "pry"; binding.pry
+    assert_equal 43.33, @cart.percentage_occupied
+  end
 end
