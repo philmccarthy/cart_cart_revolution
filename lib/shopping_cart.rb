@@ -44,4 +44,17 @@ class ShoppingCart
       product.quantity
     end.reverse
   end
+
+  def sorted_products_by_category
+    @products.sort_by do |product|
+      product.category
+    end
+  end
+
+  def product_breakdown
+    products = sorted_products_by_category
+    products.group_by do |product|
+      product.category
+    end
+  end
 end
