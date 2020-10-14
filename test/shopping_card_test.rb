@@ -34,4 +34,28 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product4)
     assert @cart.is_full?
   end
+
+  def test_cart_can_report_percentage_occupied
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    assert_equal 43.33, @cart.percentage_occupied
+  end
+
+  def test_cart_can_sort_products_by_quantity
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+    assert_equal [@product4, @product1, @product2, @product3], @cart.sorted_products_by_quantity
+  end
+
+  def test_can_report_product_breakdown_by_category
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+    expected = {meat: [@product2], paper: [@product1, @product3], produce: [@product4]}
+    assert_equal expected, @cart.product_breakdown
+  end
 end
