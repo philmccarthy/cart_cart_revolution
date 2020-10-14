@@ -20,19 +20,13 @@ class ShoppingCart
   end
 
   def total_number_of_products
-    sum = 0
-    @products.each do |product|
+    @products.inject(0) do |sum, product|
       sum += product.quantity
     end
-    sum
   end
 
   def is_full?
-    if total_number_of_products >= @capacity
-      true
-    else
-      false
-    end
+    total_number_of_products >= @capacity
   end
 
   def percentage_occupied
